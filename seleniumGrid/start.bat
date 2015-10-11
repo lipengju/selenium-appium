@@ -1,0 +1,1 @@
+java -jar selenium-server-standalone-2.45.0.jar>>D:/git/PyCharm/SeleniumHq/seleniumGrid/log.txt 2>&1

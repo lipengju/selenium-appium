@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<system>
+    <dataDriver>
+
+        <!--百度测试数据-->
+        <baiduUrl>https://www.baidu.com/</baiduUrl>
+        <testData>百度一下，你就知道</testData>
+
+        <!--sina邮箱参数化的数据-->
+        <urlSina>http://mail.sina.com.cn/</urlSina>
+        <sinaTitle>新浪邮箱</sinaTitle>
+        <loginSina username="liwangpingmysql@sina.com" passwd="1949358810mysql"></loginSina>
+        <ChengSina>liwangpingmysql@sina.com</ChengSina>
+
+        <!--126邮箱参数化的数据-->
+        <url126>http://www.126.com/</url126>
+        <title126>126网易免费邮--你的专业电子邮局</title126>
+        <niCheng>weiketest@126.com</niCheng>
+        <login126 username="weiketest" passwd="server"></login126>
+
+        <!--selenium grid2参数化的设置-->
+        <browserChrome>chrome</browserChrome>
+        <browserIe>Internet Explorer</browserIe>
+        <browserFirefox>firefox</browserFirefox>
+
+
+        <!--android移动平台数据-->
+
+    </dataDriver>
+</system>
