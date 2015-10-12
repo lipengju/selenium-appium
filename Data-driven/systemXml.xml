@@ -9,7 +9,7 @@
         <!--sina邮箱参数化的数据-->
         <urlSina>http://mail.sina.com.cn/</urlSina>
         <sinaTitle>新浪邮箱</sinaTitle>
-        <loginSina username="liwangpingmysql@sina.com" passwd="1949358810mysql"></loginSina>
+        <loginSina username="SINA email account" passwd="SINA email account password"></loginSina>
         <ChengSina>liwangpingmysql@sina.com</ChengSina>
 
         <!--126邮箱参数化的数据-->

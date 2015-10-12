@@ -18,7 +18,7 @@ import smtplib
 
 
 #发送邮件
-def sentMail(newFile,from_addr='liwangpingmysql@sina.com',passwd='1949358810mysql',smtp_server='smtp.sina.com',to_addr='975362632@qq.com'):
+def sentMail(newFile,from_addr='SINA email account',passwd='SINA email account password',smtp_server='smtp.sina.com',to_addr='QQ mailbox'):
     #邮件正文
     f=open(newFile,'rb')
     mailContent=f.read()
