@@ -5,6 +5,8 @@
 from selenium.webdriver.support.wait import  WebDriverWait
 from selenium.webdriver.support.expected_conditions import NoSuchElementException
 from selenium.webdriver.support.expected_conditions import NoSuchFrameException
+from selenium.webdriver.support import  expected_conditions
+from selenium.webdriver.common.by import By
 from selenium import  webdriver
 from appium import  webdriver
 import  xml.dom.minidom,os,glob
@@ -36,8 +38,8 @@ class Page(object):
 	def find_element(self,*loc):
 		try:
 			return self.driver.find_element(*loc)
-		except NoSuchElementException:
-			print 'Interface elements found, reposition!'
+		except (NoSuchElementException,KeyError,ValueError,Exception),e:
+			print 'Error details:%s'%(e.args[0])
 
 
 	def open(self):
@@ -60,7 +62,7 @@ class Page(object):
 		:param value:
 		:return:
 		"""
-		dom=xml.dom.minidom.parse("D:/git/python/SeleniumHq/Data-driven/systemXml.xml")
+		dom=xml.dom.minidom.parse("D:/git/GITHUB/selenium-appium/Data-driven/systemXml.xml")
 		db=dom.documentElement
 		name=db.getElementsByTagName(value)
 		nameValue=name[0]
@@ -73,7 +75,7 @@ class Page(object):
 		:param child:子节点
 		:return:
 		"""
-		dom=xml.dom.minidom.parse("D:/git/python/SeleniumHq/Data-driven/systemXml.xml")
+		dom=xml.dom.minidom.parse("D:/git/GITHUB/selenium-appium/Data-driven/systemXml.xml")
 		db=dom.documentElement
 		itemlist=db.getElementsByTagName(parent)
 		item=itemlist[0]
@@ -94,7 +96,7 @@ class Page(object):
 		return driver
 
 
-	def getIndexCsv(self,value1,value2,file_name="D:/Git/python/SeleniumHq/Data-driven/testData.csv"):
+	def getIndexCsv(self,value1,value2,file_name="D:/git/GITHUB/selenium-appium/Data-driven/testData.csv"):
 		"""
 		:param file_name: csv文件的路劲
 		:return:csv文件中每列的数据
@@ -107,7 +109,7 @@ class Page(object):
 				rows.append(row)
 			return rows[value1][value2]
 
-	def getCsv(self,file_name='D:/Git/python/SeleniumHq/Data-driven/testData.cs'):
+	def getCsv(self,file_name='D:/git/GITHUB/selenium-appium/Data-driven/testData.cs'):
 		"""
 		:param file_name: csv文件de路劲
 		:return:返回csv文件的数据,结合ddt模块
@@ -121,7 +123,7 @@ class Page(object):
 			return rows
 
 
-	def getExcel(self,file_name='D:/git/PyCharm/SeleniumHq/Data-driven/testData.xls'):
+	def getExcel(self,file_name='D:/git/GITHUB/selenium-appium/Data-driven/testData.xls'):
 		"""
 		:return:返回excel文件中数据，结合ddt模块
 		"""
@@ -133,7 +135,7 @@ class Page(object):
 		return rows
 
 
-	def getIndexExcel(self,rowValue,colValue,file_name="D:/git/PyCharm/SeleniumHq/Data-driven/testData.xlsx"):
+	def getIndexExcel(self,rowValue,colValue,file_name="D:/git/GITHUB/selenium-appium/Data-driven/testData.xlsx"):
 		"""
 		:param file_name: excel文件的路劲
 		:return:返回excel每列的数据
