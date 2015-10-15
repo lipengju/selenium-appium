@@ -12,7 +12,8 @@ DesiredCapabilities.INTERNETEXPLORER['ignoreProtectedModeSettings'] = True
 
 class singPage(unittest.TestCase,BasePage.Page):
 	def setUp(self,value='urlSina'):
-		self.driver=self.browser('firefox')
+		self.verificationErrors=[]
+		self.driver=webdriver.Firefox()
 		self.driver.maximize_window()
 		self.driver.implicitly_wait(30)
 		self.driver.get(self.getXmlData(value))
@@ -32,6 +33,7 @@ class singPage(unittest.TestCase,BasePage.Page):
 
 	def tearDown(self):
 		self.driver.quit()
+		self.assertEqual([],self.verificationErrors)
 
 if __name__=='__main__':
 	suite=unittest.TestLoader().loadTestsFromTestCase(singPage)
