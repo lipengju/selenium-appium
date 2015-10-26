@@ -37,7 +37,7 @@ class Page(object):
 
 	def find_element(self,*loc):
 		try:
-			return self.driver.find_element(*loc)
+			return  self.driver.find_element(*loc)
 		except (NoSuchElementException,KeyError,ValueError,Exception),e:
 			print 'Error details:%s'%(e.args[0])
 
