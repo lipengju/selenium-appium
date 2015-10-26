@@ -1,7 +1,6 @@
 #coding:utf-8
 #!/usr/bin/python
 
-
 from selenium.webdriver.support.wait import  WebDriverWait
 from selenium.webdriver.support.expected_conditions import NoSuchElementException
 from selenium.webdriver.support.expected_conditions import NoSuchFrameException
@@ -68,7 +67,7 @@ class Page(object):
 		nameValue=name[0]
 		return nameValue.firstChild.data
 
-	def getXmlUser(self,parent,child):
+	def getXmlData(self,parent,child):
 		"""
 		获取xml中的子节点的数据
 		:param parent:父节点
@@ -96,7 +95,7 @@ class Page(object):
 		return driver
 
 
-	def getIndexCsv(self,value1,value2,file_name="D:/git/GITHUB/selenium-appium/Data-driven/testData.csv"):
+	def getCsvData(self,value1,value2,file_name="D:/git/GITHUB/selenium-appium/Data-driven/testData.csv"):
 		"""
 		:param file_name: csv文件的路劲
 		:return:csv文件中每列的数据
@@ -109,7 +108,7 @@ class Page(object):
 				rows.append(row)
 			return rows[value1][value2]
 
-	def getCsv(self,file_name='D:/git/GITHUB/selenium-appium/Data-driven/testData.cs'):
+	def getCsvData(self,file_name='D:/git/GITHUB/selenium-appium/Data-driven/testData.cs'):
 		"""
 		:param file_name: csv文件de路劲
 		:return:返回csv文件的数据,结合ddt模块
@@ -123,7 +122,7 @@ class Page(object):
 			return rows
 
 
-	def getExcel(self,file_name='D:/git/GITHUB/selenium-appium/Data-driven/testData.xls'):
+	def getExcelData(self,file_name='D:/git/GITHUB/selenium-appium/Data-driven/testData.xls'):
 		"""
 		:return:返回excel文件中数据，结合ddt模块
 		"""
@@ -135,7 +134,7 @@ class Page(object):
 		return rows
 
 
-	def getIndexExcel(self,rowValue,colValue,file_name="D:/git/GITHUB/selenium-appium/Data-driven/testData.xlsx"):
+	def getExcelData(self,rowValue,colValue,file_name="D:/git/GITHUB/selenium-appium/Data-driven/testData.xlsx"):
 		"""
 		:param file_name: excel文件的路劲
 		:return:返回excel每列的数据
