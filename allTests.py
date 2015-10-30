@@ -17,7 +17,7 @@ listTestCase='D:/git/GITHUB/selenium-appium/TestCase'
 #测试报告的目录
 result_dir='D:/git/GITHUB/selenium-appium/Test-report/'
 
-#发送邮件
+
 def sentMail(newFile,from_addr='SINA email account',passwd='SINA email account password',smtp_server='smtp.sina.com',to_addr='QQ mailbox'):
     #邮件正文
     f=open(newFile,'rb')
@@ -37,9 +37,10 @@ def sentMail(newFile,from_addr='SINA email account',passwd='SINA email account p
     server.quit()
     print u'Mail sent successfully'
 
-#找到最新的测试报告
+
 def sendReport():
     lists=os.listdir(result_dir)
+	#找到最新的测试报告
     lists.sort(key=lambda fn: os.path.getmtime(result_dir+"\\"+fn) if not os.path.isdir(result_dir+"\\"+fn) else 0)
     print u'最新测试报告:',lists[-1]
 
@@ -48,8 +49,6 @@ def sendReport():
     print newFile
     #调用发邮件模块
     sentMail(newFile)
-
-
 
 
 def createSuite():
