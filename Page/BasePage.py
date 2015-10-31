@@ -13,7 +13,7 @@ import  csv,xlrd,threading,os,sys
 import  urllib,urlparse,HTMLParser ,sgmllib
 from time import  sleep
 
-
+data_dir='D:/git/GITHUB/selenium-appium/Data-driven/'
 class Page(object):
 	kb_url='http://www.baidu.com'
 	def __init__(self,selenium_driver,base_url=kb_url,parent=None):
@@ -29,6 +29,7 @@ class Page(object):
 		self.timeout=30
 		self.parent=parent
 		self.tabs={}
+		global  data_dir
 
 	def _open(self,url):
 		url=self.base_url+url
@@ -61,20 +62,20 @@ class Page(object):
 		:param value:
 		:return:
 		"""
-		dom=xml.dom.minidom.parse("D:/git/GITHUB/selenium-appium/Data-driven/systemXml.xml")
+		dom=xml.dom.minidom.parse(data_dir+"systemXml.xml")
 		db=dom.documentElement
 		name=db.getElementsByTagName(value)
 		nameValue=name[0]
 		return nameValue.firstChild.data
 
-	def getXmlData(self,parent,child):
+	def getXmlUser(self,parent,child):
 		"""
 		获取xml中的子节点的数据
 		:param parent:父节点
 		:param child:子节点
 		:return:
 		"""
-		dom=xml.dom.minidom.parse("D:/git/GITHUB/selenium-appium/Data-driven/systemXml.xml")
+		dom=xml.dom.minidom.parse(data_dir+"systemXml.xml")
 		db=dom.documentElement
 		itemlist=db.getElementsByTagName(parent)
 		item=itemlist[0]
@@ -95,7 +96,7 @@ class Page(object):
 		return driver
 
 
-	def getCsvData(self,value1,value2,file_name="D:/git/GITHUB/selenium-appium/Data-driven/testData.csv"):
+	def getCsvData(self,value1,value2,file_name=data_dir+"testData.csv"):
 		"""
 		:param file_name: csv文件的路劲
 		:return:csv文件中每列的数据
@@ -108,7 +109,7 @@ class Page(object):
 				rows.append(row)
 			return rows[value1][value2]
 
-	def getCsvData(self,file_name='D:/git/GITHUB/selenium-appium/Data-driven/testData.cs'):
+	def getCsvDdt(self,file_name=data_dir+'testData.cs'):
 		"""
 		:param file_name: csv文件de路劲
 		:return:返回csv文件的数据,结合ddt模块
@@ -122,7 +123,7 @@ class Page(object):
 			return rows
 
 
-	def getExcelData(self,file_name='D:/git/GITHUB/selenium-appium/Data-driven/testData.xls'):
+	def getExcelData(self,file_name=data_dir+'testData.xls'):
 		"""
 		:return:返回excel文件中数据，结合ddt模块
 		"""
@@ -134,7 +135,7 @@ class Page(object):
 		return rows
 
 
-	def getExcelData(self,rowValue,colValue,file_name="D:/git/GITHUB/selenium-appium/Data-driven/testData.xlsx"):
+	def getExcelDdt(self,rowValue,colValue,file_name=data_dir+"testData.xlsx"):
 		"""
 		:param file_name: excel文件的路劲
 		:return:返回excel每列的数据
