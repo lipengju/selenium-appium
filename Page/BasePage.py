@@ -48,6 +48,9 @@ class Page(object):
 	def on_page(self):
 		return self.driver.current_url==(self.base_url+self.url)
 
+	def getCurrentUrl(self):
+		return self.driver.current_url
+
 	def scriptKJs(self,src):
 		"""
 		执行js的代码
