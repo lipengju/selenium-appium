@@ -144,52 +144,6 @@ class Page(object):
 		sheet=book.sheet_by_index(0)
 		return sheet.row_values(rowValue,colValue)
 
-	def getAlertText(self):
-		"""
-		:return:返回alert的文本
-		"""
-		return self.driver.switch_to_alert().text
-
-	def clickAccept(self):
-		"""
-		接受alert
-		:return:
-		"""
-		self.driver.switch_to_alert().accept()
-
-	def clickDismiss(self):
-		"""
-		拒绝alert
-		:return:
-		"""
-		self.driver.switch_to_alert().dismiss()
-
-	def InputPrompt(self,value):
-		"""
-		对js的prompt的处理
-		:param value: prompt要输入的值
-		:return:
-		"""
-		self.driver.switch_to_alert().send_keys(value)
-
-	def frame(self,id):
-		"""
-		对frame框架的处理
-		:param id:iframe的id或者是iframe的索引值
-		:return:
-		"""
-		try:
-			self.driver.switch_to_frame(id)
-		except NoSuchFrameException:
-			print u'Frame positioning fails, please relocate!'
-
-	def closeFrame(self):
-		"""
-		对frame框架进行闭合操作
-		:return:
-		"""
-		self.driver.switch_to_default_content()
-
 
 	def getAndroid(self,version,deviceName,package,activity):
 		"""
@@ -213,10 +167,6 @@ class Page(object):
 		desired_caps['browserName']=''
 		self.driver=webdriver.Remote("http://127.0.0.1:4723/wd/hub",desired_caps)
 		self.driver.implicitly_wait(30)
-
-	def getIos(self):
-		pass
-
 
 	def getServerAndroid(self,version,deviceName,package,activity):
 		"""
