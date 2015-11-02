@@ -14,6 +14,8 @@ import  urllib,urlparse,HTMLParser ,sgmllib
 from time import  sleep
 
 
+
+
 class Page(object):
 	data_dir='D:/git/GITHUB/selenium-appium/Data-driven/'
 	kb_url='http://www.baidu.com'
