@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 #coding:utf-8
 
+from selenium.webdriver.support.wait import  WebDriverWait
+from selenium.webdriver.support.expected_conditions import NoSuchElementException
+from selenium.webdriver.support.expected_conditions import NoSuchFrameException
+from selenium.webdriver.support import  expected_conditions
+from selenium.webdriver.common.by import By
+from selenium import  webdriver
+from appium import  webdriver
+
 class Factory:
 	def createAutomation(self,page):
 		if page=='web':
@@ -16,21 +24,21 @@ class WebPage(AutomationPage):
 	def __str__(self):
 		return 'web'
 
-	def share(self):
-		print u'我是全部可以调用的,'
+	def __init__(self,driver):
+		self.driver=driver
 
-	def getWeb(self):
-		print u'web自动化测试'
+	def getCurrentUrl(self):
+		return self.driver.current_url
+
+	def goTo(self,base_url):
+		self.driver.get(base_url)
+
+	def findElement(self,*loc):
+		try:
+			return self.driver.find_element(*loc)
+		except(NoSuchElementException,KeyError,ValueError),e:
+			print 'Error details :%s'%(e.args[0])
 
 class AppPage(AutomationPage):
 	def __str__(self):
 		return 'app'
-
-	def getApp(self):
-		print u'移动平台自动化测试'
-
-if __name__=='__main__':
-	factory=Factory()
-	web=factory.createAutomation('web')
-	web.getWeb()
-	web.share()
