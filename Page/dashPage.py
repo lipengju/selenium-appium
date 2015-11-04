@@ -20,6 +20,12 @@ class AutomationPage:
 	def __str__(self):
 		return 'page'
 
+	def findElement(self,*loc):
+		try:
+			return self.driver.find_element(*loc)
+		except(NoSuchElementException,KeyError,ValueError),e:
+			print 'Error details :%s'%(e.args[0])
+
 class WebPage(AutomationPage):
 	def __str__(self):
 		return 'web'
@@ -27,17 +33,11 @@ class WebPage(AutomationPage):
 	def __init__(self,driver):
 		self.driver=driver
 
-	def getCurrentUrl(self):
-		return self.driver.current_url
-
 	def goTo(self,base_url):
 		self.driver.get(base_url)
 
-	def findElement(self,*loc):
-		try:
-			return self.driver.find_element(*loc)
-		except(NoSuchElementException,KeyError,ValueError),e:
-			print 'Error details :%s'%(e.args[0])
+	def getCurrentUrl(self):
+		return self.driver.current_url
 
 class AppPage(AutomationPage):
 	def __str__(self):
