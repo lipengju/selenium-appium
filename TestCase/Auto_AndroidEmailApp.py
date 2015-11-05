@@ -14,7 +14,7 @@ class AndroidEmail(unittest.TestCase,email126Android.Email126Page):
 	3、涉及的android设备为:Samsung Galaxy S4-4.4.4-API-19
 	"""
 	def setUp(self):
-		self.getDesiredcaps('4.4.4','Samsung Galaxy S4','com.netease.mail','com.netease.mobimail.activity.StartActivity')
+		self.getAndroid('4.4.4','Samsung Galaxy S4','com.netease.mail','com.netease.mobimail.activity.StartActivity')
 
 	def testLogin(self):
 		"""
@@ -29,6 +29,6 @@ class AndroidEmail(unittest.TestCase,email126Android.Email126Page):
 		self.driver.quit()
 
 if __name__=='__main__':
-	suite=unittest.TestSuite(unittest.makeSuite(AndroidWeiBo))
+	suite=unittest.TestSuite(unittest.makeSuite(AndroidEmail))
 	result=unittest.TextTestRunner(verbosity=2).run(suite)
 	sys.exit(not result.wasSuccessful())
