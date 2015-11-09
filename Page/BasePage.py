@@ -50,6 +50,14 @@ class Page(object):
 	def on_page(self):
 		return self.driver.current_url==(self.base_url+self.url)
 
+	#文件目录
+	def data_dirs(self):
+		BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+		TEMPLATE_DIRS = (
+		os.path.join(BASE_DIR,  'Data-driven'),
+		)
+		return TEMPLATE_DIRS
+
 	def getCurrentUrl(self):
 		return self.driver.current_url
 
